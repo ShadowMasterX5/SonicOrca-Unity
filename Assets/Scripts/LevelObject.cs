@@ -1,10 +1,13 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Drawing;
+using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Sprites;
 
 namespace IntelOrca.Sonic
 {
-	abstract class LevelObject
+	abstract class LevelObject : MonoBehaviour
 	{
 		private SonicGame mGame;
 		private Level mLevel;
@@ -150,8 +153,8 @@ namespace IntelOrca.Sonic
 				int directionX, directionY, distX, distY;
 				mLevel.GetClosestCharacter(this, out directionX, out directionY, out distX, out distY);
 
-				return (Math.Abs(distX) <= 640 &&
-					Math.Abs(distY) <= 420);
+				return (Mathf.Abs(distX) <= 640 &&
+					Mathf.Abs(distY) <= 420);
 			}
 		}
 

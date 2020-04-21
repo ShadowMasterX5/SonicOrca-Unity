@@ -1,5 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Drawing;
+using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Sprites;
 
 namespace IntelOrca.Sonic
 {
@@ -14,6 +18,8 @@ namespace IntelOrca.Sonic
 		private bool mFacingLeft;
 
 		private bool mJumping;
+
+		public SpriteRenderer fx;
 
 		private int mSubType;
 
@@ -30,9 +36,9 @@ namespace IntelOrca.Sonic
 			Rectangle dst = new Rectangle(-12 * Game.DisplayScale, -16 * Game.DisplayScale, 24 * Game.DisplayScale, 32 * Game.DisplayScale);
 			Rectangle src = new Rectangle(srcX * 24 * Game.DisplayScale, srcY * 32 * Game.DisplayScale, 24 * Game.DisplayScale, 32 * Game.DisplayScale);
 
-			SpriteEffects fx = SpriteEffects.None;
+			fx.flipX = false;
 			if (VelocityX < 0)
-				fx = SpriteEffects.FlipHorizontally;
+				fx.flipX = true;
 
 			g.DrawImage(ResourceManager.AnimalsTexture, dst, src, Color.White, fx);
 		}
@@ -58,6 +64,8 @@ namespace IntelOrca.Sonic
 			VelocityY = -0x400;
 
 			mRoutine = 2;
+
+			fx = GetComponent<SpriteRenderer>();
 		}
 
 		private void MainUpdate()
