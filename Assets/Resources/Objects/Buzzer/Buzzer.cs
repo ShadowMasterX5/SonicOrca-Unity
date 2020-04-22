@@ -1,5 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Drawing;
+using UnityEngine;
 
 namespace IntelOrca.Sonic
 {
@@ -11,6 +13,7 @@ namespace IntelOrca.Sonic
 		private int mTurnWaitDuration;
 		private int mFireDuration;
 		private bool mFiredThisRound;
+		public SpriteRenderer fx;
 
 		private static byte[][] AnimationData = new byte[][] {
 			new byte[] { 0, 0, 0xFF },
@@ -33,8 +36,8 @@ namespace IntelOrca.Sonic
 			Rectangle src = new Rectangle(mAnimation.FrameValue * 48 * Game.DisplayScale, 0 * Game.DisplayScale, 48 * Game.DisplayScale, 46 * Game.DisplayScale);
 			Rectangle dst = new Rectangle(-24 * Game.DisplayScale, -23 * Game.DisplayScale, 48 * Game.DisplayScale, 46 * Game.DisplayScale);
 
-			SpriteEffects fx = (VelocityX >= 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
-			g.DrawImage(ResourceManager.BuzzerTexture, dst, src, Color.White, fx);
+			fx.flipX = (VelocityX >= 0 ? true : false);
+			g.DrawImage(ResourceManager.BuzzerTexture, dst, src, UnityEngine.Color.white, fx);
 		}
 
 		public override void Update()

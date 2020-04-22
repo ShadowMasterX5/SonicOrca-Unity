@@ -40,7 +40,7 @@ namespace IntelOrca.Sonic
 			if (VelocityX < 0)
 				fx.flipX = true;
 
-			g.DrawImage(ResourceManager.AnimalsTexture, dst, src, Color.White, fx);
+			g.DrawImage(ResourceManager.AnimalsTexture, dst, src, UnityEngine.Color.white, fx);
 		}
 
 		public override void Update()

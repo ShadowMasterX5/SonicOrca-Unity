@@ -1,8 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using System.Drawing;
+using UnityEngine;
 
 namespace IntelOrca.Sonic
 {
@@ -90,6 +91,8 @@ namespace IntelOrca.Sonic
 
 		private int mPrimaryAngle;
 		private int mSecondaryAngle;
+
+		public SpriteRenderer fx;
 
 		private Camera mCamera = new Camera();
 
@@ -208,13 +211,13 @@ namespace IntelOrca.Sonic
 			int sidx = mMappingFrame - 1;
 			Rectangle src = new Rectangle(0, 0, 64 * Game.DisplayScale, 70 * Game.DisplayScale);
 			Rectangle dst = new Rectangle(0, 0, 64 * Game.DisplayScale, 70 * Game.DisplayScale);
-			SpriteEffects fx = SpriteEffects.None;
+			fx.flipX = false;
 			if ((mStatus & CharacterState.FacingLeft) != 0)
-				fx = SpriteEffects.FlipHorizontally;
+				fx.flipX = true;
 
 			if (mFlipAngle != 0) {
 				if ((mStatus & CharacterState.FacingLeft) != 0 && mFlipTurned == 0)
-					fx = SpriteEffects.FlipHorizontally | SpriteEffects.FlipVertically;
+					fx.flipX = true | fx.flipY = false;
 			}
 
 			float angle = (float)((double)mAngle / 128.0 * Math.PI);

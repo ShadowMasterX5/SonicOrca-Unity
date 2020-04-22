@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.Sprites;
 
 namespace IntelOrca.Sonic
 {
